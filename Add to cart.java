@@ -1,9 +1,13 @@
 package Buildweek;
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class addtocart {
 
@@ -28,29 +32,25 @@ public class addtocart {
 		driver.findElement(By.className("login-btn")).click();
 		Thread.sleep(2000);
 		driver.switchTo().alert().accept();
-		Thread.sleep(5000);
-		driver.findElement(By.xpath("//div[@id='navEnd']//span[text()='SHOP NOW']")).click();
-		 Thread.sleep(2000);
-driver.findElement(By.id("gender-name")).click();
-driver.findElement(By.xpath("//label[@for='men']")).click();
-driver.findElement(By.xpath("//img[@src='https://images.bewakoof.com/t1080/men-s-black-relax-t-shirt-387407-1715257669-1.jpg']")).click();
-driver.findElement(By.cssSelector(".pd-size-m.pd-size-btn")).click();
-Thread.sleep(2000);
-WebElement addToBag = driver.findElement(By.xpath("//button[.//span[text()='ADD TO BAG']]"));
-JavascriptExecutor js = (JavascriptExecutor) driver;
-js.executeScript("arguments[0].click();", addToBag);
-Thread.sleep(2000);
-driver.findElement(By.xpath("//button[contains(., 'GO TO BAG')]")).click();
-Thread.sleep(2000);
-driver.findElement(By.xpath("//img[@src='../image/bag.svg']")).click();	
-	
-    WebElement  product = driver.findElement(By.className("Men's Casual Cargo Pants"));
-    if(product.isDisplayed()) {
-    	System.out.println("teh item is sucessfully added to cart");
-    }else {
-    	System.out.println("the item is not added to cart");
-    }
-	}
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//img[@src=\"https://images.bewakoof.com/uploads/grid/app/trending-category-icons-Joggers-men-1706512292.jpg\"]")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//img[@src=\"https://images.bewakoof.com/original/men-s-green-super-loose-fit-cargo-joggers-609806-1710771339-2.jpg\"]")).click();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebElement sizeBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".pd-size-s.pd-size-btn")));
+		sizeBtn.click();
 
+		WebElement addToBag = driver.findElement(By.id("pd-add-to-bag-btn"));
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].click();", addToBag);
+Thread.sleep(2000);
+driver.findElement(By.xpath("//img[@src=\'../image/bag.svg\']")).click();
+WebElement product = driver.findElement(By.className("old-price"));
+
+if(product.isDisplayed()) {
+    System.out.println("The item is successfully added to cart");
+} else {
+    System.out.println("The item is not added to cart");
 }
-//the Add to bag button which is used to add products in the cart is not able to perform its not clicking through automoation testing so this is actually bug
+}
+}
