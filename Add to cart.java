@@ -45,12 +45,11 @@ public class addtocart {
 		js.executeScript("arguments[0].click();", addToBag);
 Thread.sleep(2000);
 driver.findElement(By.xpath("//img[@src=\'../image/bag.svg\']")).click();
-WebElement product = driver.findElement(By.className("old-price"));
-
-if(product.isDisplayed()) {
+WebElement product = driver.findElement(By.xpath("//h5[text()=\"Men's Super Loose Fit Cargo Joggers\"]"));
+if (product.isDisplayed()) {
     System.out.println("The item is successfully added to cart");
 } else {
     System.out.println("The item is not added to cart");
 }
-}
+}	
 }
