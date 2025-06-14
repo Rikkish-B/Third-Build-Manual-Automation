@@ -28,4 +28,4 @@ driver.findElement(By.xpath("//img[@src='../image/bag.svg']")).click();
     }
 	}
 }
-//the go to bag button which is used to add products in the cart is not able to perform
+//the go to bag button which is used to add products in the cart is not able to perform its not clicking through automoation
