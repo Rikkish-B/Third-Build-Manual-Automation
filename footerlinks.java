@@ -65,4 +65,4 @@ driver.findElement(By.id("f-subscribe-btn")).click();
 Thread.sleep(2000);
 	}
 }
-<h3>the footer lnks are not clickable and when clicked it provided no futher data  its a bug<h3> 
+//the footer lnks are not clickable and when clicked it provided no futher data  its a bug
